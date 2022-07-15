@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=45", "setuptools-scm>=6.2", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "spotify_tracks_archiver"
+readme = "README.md"
+license = {file = "LICENSE.md"}
+requires-python = ">=3.9"
+dependencies = [
+    "python-dotenv<1",
+    "httpx<1",
+    "colorama<1",
+]
+dynamic = ["version"]
+
+[project.scripts]
+spotify_tracks_archiver = "spotify_tracks_archiver.main:run_cli"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["spotify_tracks_archiver*"]
+namespaces = false
+
+[tool.setuptools_scm]
