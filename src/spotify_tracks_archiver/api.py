@@ -24,10 +24,12 @@ class SpotifyAuth(httpx.Auth):
         client_secret: str,
         access_token: str | None,
         refresh_token: str,
+        print_secrets: bool,
     ) -> None:
         self.client_id = client_id
         self.client_secret = client_secret
         self.refresh_token = refresh_token
+        self.print_secrets = print_secrets
         if access_token is None:
             with httpx.Client() as client:
                 self.update_tokens(client.send(self.build_refresh_request()))
@@ -173,6 +175,7 @@ class SpotifyAPI:
                 client_secret=client_secret,
                 access_token=access_token,
                 refresh_token=refresh_token,
+                print_secrets=print_secrets,
             ),
         )
 
