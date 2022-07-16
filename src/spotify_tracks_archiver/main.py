@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import colorama
+import json
 import os
 import sys
 
@@ -78,10 +79,10 @@ def run_cli(
         access_token=access_token,
         print_secrets=args.secrets,
     )
-    import pprint
-    pp = pprint.PrettyPrinter()
     tracks = sp_api.get_user_tracks()
-    pp.pprint(list(t._asdict() for t in tracks))
+    print(
+        json.dumps(list(t._asdict() for t in tracks), indent=4),
+    )
 
     return 0
 
