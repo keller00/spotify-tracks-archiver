@@ -2,12 +2,14 @@
 [![PyPi](https://img.shields.io/pypi/v/flake8-init-return.svg)](https://pypi.python.org/pypi/spotify_tracks_archiver/)
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/keller00/spotify-tracks-archiver/main.svg)](https://results.pre-commit.ci/latest/github/keller00/spotify-tracks-archiver/main)
 
-A way to back up your "Liked Songs" library from Spotify.
+A way to back up your "Liked Songs" library from Spotify to a JSON file.
 
-## Get started
+## Set up
 
 1. Set up a virtualenv and install this project into it.
-    `python -m pip install spotify_tracks_archiver`
+    ```console
+    python -m pip install spotify_tracks_archiver
+    ```
 
 2. Create an app at https://developer.spotify.com/dashboard/applications and save the `Client ID` and `Client Secret` into a file called `.env` like this (or set them as individual environmental variables):
     ```
@@ -21,4 +23,4 @@ A way to back up your "Liked Songs" library from Spotify.
     REFRESH_TOKEN="..."
     ```
 
-4. You're done, execute `spotify_tracks_archiver` and pipe it into a file and/or automate the process on some CI.
+4. You're done, execute `spotify_tracks_archiver` and pipe it into a file and/or automate the process on some CI ([example on GitHub Actions](https://github.com/keller00/spotify-tracks-archiver-action)).
