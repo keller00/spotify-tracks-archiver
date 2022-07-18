@@ -1,19 +1,18 @@
 from __future__ import annotations
 
-"""This submodule creates the cli used by the project."""
-
 import argparse
-import colorama
 import json
 import os
 import sys
-
-from dotenv import dotenv_values
 from importlib.metadata import version
 from typing import Sequence
 
-from . import constants
+import colorama
+from dotenv import dotenv_values
+
 from . import api
+from . import constants
+"""This submodule creates the cli used by the project."""
 
 
 def run_cli(
