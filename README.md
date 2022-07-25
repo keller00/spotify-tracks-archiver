@@ -1,5 +1,6 @@
 # spotify_tracks_archiver
 [![PyPi](https://img.shields.io/pypi/v/spotify-tracks-archiver.svg)](https://pypi.python.org/pypi/spotify_tracks_archiver/)
+[![codecov](https://codecov.io/gh/keller00/spotify-tracks-archiver/branch/main/graph/badge.svg?token=A2QLP6KRG0)](https://codecov.io/gh/keller00/spotify-tracks-archiver)
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/keller00/spotify-tracks-archiver/main.svg)](https://results.pre-commit.ci/latest/github/keller00/spotify-tracks-archiver/main)
 
 A way to back up your "Liked Songs" library from Spotify to a JSON file.
