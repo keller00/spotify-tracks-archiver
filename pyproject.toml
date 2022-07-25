@@ -1,11 +1,11 @@
 [build-system]
-requires = ["setuptools>=45", "setuptools-scm>=6.2", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [project]
 name = "spotify_tracks_archiver"
 readme = "README.md"
-license = {file = "LICENSE.md"}
+license-files = {paths = ["LICENSE.md"]}
 requires-python = ">=3.9"
 dependencies = [
     "python-dotenv<1",
@@ -13,13 +13,74 @@ dependencies = [
     "colorama<1",
 ]
 dynamic = ["version"]
+description = "A python application to back up your \"Liked Songs\" library from Spotify to a JSON file"
 
 [project.scripts]
 spotify_tracks_archiver = "spotify_tracks_archiver.main:run_cli"
+
+[project.urls]
+Source = "https://github.com/keller00/spotify-tracks-archiver"
+Issues = "https://github.com/keller00/spotify-tracks-archiver/issues"
 
 [tool.setuptools.packages.find]
 where = ["src"]
 include = ["spotify_tracks_archiver*"]
 namespaces = false
 
-[tool.setuptools_scm]
+[tool.hatch.version]
+path = "src/spotify_tracks_archiver/__init__.py"
+
+[tool.hatch.build.targets.sdist]
+exclude = [
+  "/.github",
+  "tests",
+]
+
+[tool.hatch.build.targets.wheel]
+
+[tool.hatch.envs.default]
+dependencies = [
+  "coverage[toml]",
+  "pytest",
+]
+
+[[tool.hatch.envs.default.matrix]]
+python = ["39", "310"]
+
+[tool.hatch.envs.default.scripts]
+tests = [
+    "coverage erase",
+    "coverage run -m pytest {args:tests}",
+    "coverage report",
+]
+tests-cov = [
+    "tests",
+    "coverage xml -o coverage.xml"
+]
+
+[tool.hatch.envs.lint]
+detached = true
+dependencies = [
+  "pre-commit",
+]
+
+[tool.hatch.envs.lint.scripts]
+lint = "pre-commit run -a"
+
+
+[tool.coverage.run]
+branch = true
+source = [
+    "spotify_tracks_archiver",
+    "tests",
+]
+omit = [
+  "src/spotify_tracks_archiver/__main__.py",
+]
+
+
+[tool.coverage.report]
+exclude_lines = [
+  "pragma: no cover",
+  "if __name__ == .__main__.:",
+]
