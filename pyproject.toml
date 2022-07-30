@@ -38,16 +38,16 @@ exclude = [
 
 [tool.hatch.build.targets.wheel]
 
-[tool.hatch.envs.default]
+[tool.hatch.envs.tests]
 dependencies = [
   "coverage[toml]",
   "pytest>=6.0",
 ]
 
-[[tool.hatch.envs.default.matrix]]
+[[tool.hatch.envs.tests.matrix]]
 python = ["39", "310"]
 
-[tool.hatch.envs.default.scripts]
+[tool.hatch.envs.tests.scripts]
 tests = [
     "coverage erase",
     "coverage run -m pytest {args:tests}",
