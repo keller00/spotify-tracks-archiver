@@ -80,7 +80,12 @@ def run_cli(
     )
     tracks = sp_api.get_user_tracks()
     print(
-        json.dumps(list(t._asdict() for t in tracks), indent=4),
+        json.dumps(
+            list(
+                t._asdict()
+                for t in tracks
+            ), indent=4, ensure_ascii=False,
+        ),
     )
 
     return 0
