@@ -1,26 +1,30 @@
 [build-system]
-requires = ["hatchling"]
 build-backend = "hatchling.build"
+requires = [
+  "hatchling",
+]
 
 [project]
 name = "spotify_tracks_archiver"
+description = "A python application to back up your \"Liked Songs\" library from Spotify to a JSON file"
 readme = "README.md"
 license-files = {paths = ["LICENSE.md"]}
 requires-python = ">=3.9"
 dependencies = [
-    "python-dotenv<1",
-    "httpx<1",
-    "colorama<1",
+  "colorama<1",
+  "httpx<1",
+  "python-dotenv<1",
 ]
-dynamic = ["version"]
-description = "A python application to back up your \"Liked Songs\" library from Spotify to a JSON file"
+dynamic = [
+  "version",
+]
+[project.urls]
+Issues = "https://github.com/keller00/spotify-tracks-archiver/issues"
+Source = "https://github.com/keller00/spotify-tracks-archiver"
 
 [project.scripts]
 spotify_tracks_archiver = "spotify_tracks_archiver.main:run_cli"
 
-[project.urls]
-Source = "https://github.com/keller00/spotify-tracks-archiver"
-Issues = "https://github.com/keller00/spotify-tracks-archiver/issues"
 
 [tool.setuptools.packages.find]
 where = ["src"]
