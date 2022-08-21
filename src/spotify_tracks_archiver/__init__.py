@@ -1,3 +1,3 @@
 from __future__ import annotations
 
-__version__ = '1.0.3'
+from .version import __version__  # noqa: F401

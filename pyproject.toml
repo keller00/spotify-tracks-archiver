@@ -1,14 +1,12 @@
 [build-system]
-build-backend = "hatchling.build"
-requires = [
-  "hatchling",
-]
+requires = ["setuptools>=58", "setuptools-scm>=6"]
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "spotify_tracks_archiver"
 description = "A python application to back up your \"Liked Songs\" library from Spotify to a JSON file"
 readme = "README.md"
-license-files = {paths = ["LICENSE.md"]}
+license = {file = "LICENSE.md"}
 requires-python = ">=3.9"
 dependencies = [
   "colorama<1",
@@ -18,6 +16,7 @@ dependencies = [
 dynamic = [
   "version",
 ]
+
 [project.urls]
 Issues = "https://github.com/keller00/spotify-tracks-archiver/issues"
 Source = "https://github.com/keller00/spotify-tracks-archiver"
@@ -25,69 +24,20 @@ Source = "https://github.com/keller00/spotify-tracks-archiver"
 [project.scripts]
 spotify_tracks_archiver = "spotify_tracks_archiver.main:run_cli"
 
-
 [tool.setuptools.packages.find]
 where = ["src"]
 include = ["spotify_tracks_archiver*"]
 namespaces = false
 
-[tool.hatch.version]
-path = "src/spotify_tracks_archiver/__init__.py"
-
-[tool.hatch.build.targets.sdist]
-exclude = [
-  "/.github",
-  "tests",
-]
-
-[tool.hatch.build.targets.wheel]
-
-[tool.hatch.envs.tests]
-dependencies = [
-  "coverage[toml]",
-  "pytest>=6.0",
-]
-
-[[tool.hatch.envs.tests.matrix]]
-python = ["39", "310"]
-
-[tool.hatch.envs.tests.scripts]
-tests = [
-    "coverage erase",
-    "coverage run -m pytest {args:tests}",
-    "coverage report",
-]
-tests-cov = [
-    "tests",
-    "coverage xml -o coverage.xml"
-]
-
-[tool.hatch.envs.lint]
-detached = true
-dependencies = [
-  "pre-commit",
-]
-
-[tool.hatch.envs.lint.scripts]
-lint = "pre-commit run -a"
-
-
-[tool.coverage.run]
-branch = true
-source = [
-    "spotify_tracks_archiver",
-    "tests",
-]
-omit = [
-  "src/spotify_tracks_archiver/__main__.py",
-]
-
-
-[tool.coverage.report]
-exclude_lines = [
-  "pragma: no cover",
-  "if __name__ == .__main__.:",
-]
+[tool.setuptools_scm]
+write_to = "src/spotify_tracks_archiver/version.py"
 
 [tool.pytest.ini_options]
 addopts = "--color=yes --tb=short"
+
+[project.optional-dependencies]
+testing = [
+    "pytest",
+    "coverage[toml]",
+    "covdefaults",
+]
