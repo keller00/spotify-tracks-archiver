@@ -13,3 +13,4 @@ __pycache__/
 .coverage
 coverage.xml
 dist
+src/spotify_tracks_archiver/version.py
