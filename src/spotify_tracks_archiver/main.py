@@ -62,13 +62,27 @@ def run_cli(
             file=sys.stderr,
         )
         return 1
+    elif client_id == '...':
+        print(
+            f"{constants.client_id} is set to '...', "
+            'did you forget to update .env?',
+            file=sys.stderr,
+        )
+        return 2
     if client_secret is None:
         print(
             f"'{constants.client_secret}' is not set, use a .env file "
-            'or a environmental veriable to set it',
+            'or a environmental variable to set it',
             file=sys.stderr,
         )
         return 1
+    elif client_secret == '...':
+        print(
+            f"{constants.client_secret} is set to '...', "
+            'did you forget to update .env?',
+            file=sys.stderr,
+        )
+        return 2
     if args.dry_run:
         return 0
     sp_api = api.SpotifyAPI(
