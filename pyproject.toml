@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "spotify_tracks_archiver"
 description = "A python application to back up your \"Liked Songs\" library from Spotify to a JSON file"
 readme = "README.md"
-license = {file = "LICENSE.md"}
+license = {text = "The MIT License (MIT)"}
 requires-python = ">=3.9"
 dependencies = [
   "colorama<1",
