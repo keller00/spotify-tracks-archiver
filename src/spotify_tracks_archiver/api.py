@@ -123,7 +123,6 @@ class SpotifyAPI:
                 ('', 8000),
                 OAUTHTTPRequestHandler,
             ) as http_server:
-                # TODO: disable HTTP server from printing what it receives
                 url = httpx.URL(
                     constants.SPOTIFY_ACCOUNTS_AUTHORIZE_URL,
                     params={

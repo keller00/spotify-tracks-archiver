@@ -42,6 +42,9 @@ jobs:
         run: tox --skip-pkg-install
         env:
           PYTEST_ADDOPTS: --color=yes
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+          REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
       - name: Upload coverage report to Codecov
         if: ${{ matrix.python-version == '3.10' }}
         uses: codecov/codecov-action@v3

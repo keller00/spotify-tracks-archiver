@@ -29,11 +29,6 @@ def test_version(capsys):
 def test_dry_run():
     assert main.run_cli(
         ['--dry-run'],
-        config={
-            'CLIENT_ID': 'client_id',
-            'CLIENT_SECRET': 'client_secret',
-            'REFRESH_TOKEN': 'refresh_token',
-        },
     ) == 0
 
 

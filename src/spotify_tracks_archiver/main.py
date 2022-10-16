@@ -29,7 +29,7 @@ def run_cli(
     parser.add_argument(
         '--dry-run',
         action='store_true',
-        help='don\'t actually fetch track informations',
+        help='don\'t actually fetch track information',
     )
     parser.add_argument(
         '--print-secrets',
@@ -83,8 +83,6 @@ def run_cli(
             file=sys.stderr,
         )
         return 2
-    if args.dry_run:
-        return 0
     sp_api = api.SpotifyAPI(
         client_id=client_id,
         client_secret=client_secret,
@@ -92,6 +90,8 @@ def run_cli(
         access_token=access_token,
         print_secrets=args.secrets,
     )
+    if args.dry_run:
+        return 0
     tracks = sp_api.get_user_tracks()
     print(
         json.dumps(
