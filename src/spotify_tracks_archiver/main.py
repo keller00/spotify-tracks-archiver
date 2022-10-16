@@ -29,7 +29,7 @@ def run_cli(
     parser.add_argument(
         '--dry-run',
         action='store_true',
-        help='don\'t actually fetch track informations',
+        help='don\'t actually fetch track information',
     )
     parser.add_argument(
         '--print-secrets',
