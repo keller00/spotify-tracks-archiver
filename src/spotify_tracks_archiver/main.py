@@ -18,7 +18,7 @@ from . import constants
 def run_cli(
     argv: Sequence[str] | None = None,
     /, *,
-    config: dict[str, str] | None = None,
+    config: dict[str, str | None] | None = None,
 ) -> int:
     parser = argparse.ArgumentParser(constants.app_name)
     parser.add_argument(

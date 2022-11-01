@@ -73,7 +73,7 @@ class SpotifyAuth(httpx.Auth):
     ) -> None:
         data = response.json()
         self.access_token = data['access_token']
-        if self.print_secrets:
+        if self.print_secrets:  # pragma: no cover
             print(
                 colorama.Fore.RED +
                 f'Updated access token to \'{self.access_token}\'',
@@ -162,7 +162,7 @@ class SpotifyAPI:
                     client_secret=client_secret,
                 )
                 print(f'{colorama.Fore.GREEN}Successfully authenticated')
-                if self.print_secrets:
+                if self.print_secrets:  # pragma: no cover
                     print(
                         colorama.Fore.RED +
                         f'Save this for later!! {refresh_token=}',
