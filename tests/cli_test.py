@@ -32,6 +32,24 @@ def test_dry_run():
     ) == 0
 
 
+def test_not_set_client_id():
+    assert main.run_cli(
+        config={
+            'CLIENT_ID': None,
+            'CLIENT_SECRET': 'something',
+        },
+    ) == 1
+
+
+def test_not_set_client_secret():
+    assert main.run_cli(
+        config={
+            'CLIENT_ID': 'something',
+            'CLIENT_SECRET': None,
+        },
+    ) == 1
+
+
 def test_unchanged_env_detection():
     """For when someone forgets to update .env after copying the example."""
     assert main.run_cli(
