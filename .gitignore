@@ -2,6 +2,7 @@
 ./.env*
 
 # Editor specific
+.idea
 .vscode
 
 # Virtual environments
