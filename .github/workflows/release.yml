@@ -20,4 +20,4 @@ jobs:
     - name: Build project
       run: python -m build .
     - name: Publish package
-      uses: pypa/gh-action-pypi-publish@release/v1.5
+      uses: pypa/gh-action-pypi-publish@release/v1.8
